@@ -1,1 +1,35 @@
-
+<div class="bg-lime-200 h-[100vh]">
+  <div class="text-center font-medium text-3xl pt-20">TODO Application</div>
+  <div class="flex mt-10 justify-center items-center gap-2">
+    <input
+      type="text"
+      id="todoText"
+      class="p-2 border border-gray-300 rounded-md w-96"
+      placeholder="Enter your task"
+      [(ngModel)]="todoText"
+      (keyup.enter)="addTodo(todoText)"
+    />
+    <button
+      (click)="addTodo(todoText)"
+      class="block p-2 px-6 bg-lime-500 text-white rounded-md"
+    >
+      Add Task
+    </button>
+  </div>
+  <div class="mx-auto text-center font-medium text-2xl mt-10 w-[60%]">Todo</div>
+  <div
+    class="text-black mx-auto text-xl mt-4 w-[60%] overflow-y-scroll max-h-[50%]"
+  >
+    @for (todo of todos; track todo.id) {
+    <div class="bg-gray-100 rounded-lg p-4 my-2 flex justify-between">
+      <p>{{ todo.todoText }}</p>
+      <button
+        class="bg-red-500 inline-flex justify-center items-center p-1 rounded-lg"
+        (click)="deleteTodo(todo.id)"
+      >
+        <mat-icon class="text-white">delete</mat-icon>
+      </button>
+    </div>
+    }
+  </div>
+</div>
